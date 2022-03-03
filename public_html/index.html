@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="graph/icon.ico">
+    <meta name="author" content="Gerasimov Nikita">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>Web_Lab_1</title>
+    <style>
+        body {
+            font-size: 16px;
+            font-family: Nunito, serif;
+            background-color: #e6e6fa;
+        }
+
+        table, tr, td {
+            padding: 0px;
+        }
+
+        #main-table {
+            width: 95%;
+            margin: auto;
+            border-spacing: 1em;
+        }
+
+        #header-block {
+            padding: 1em 30px;
+            font-size: 20px;
+            color: #ffffff;
+            font-family: cursive;
+            background-color: #9370db;
+            border: 3px solid #663399;
+        }
+
+        .top-plate {
+            display: inline-block;
+            background-color: #9370db;
+            width: 100%;
+            margin: 0 0 20px;
+            padding: 0;
+            color: #000000;
+            font-size: 18px;
+        }
+
+        #result-table-header {
+            background-color: #7b68ee;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #scroll-plate {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            top: 76px;
+            width: 100%;
+            overflow-y: scroll;
+        }
+
+        #plate-with-graph {
+            text-align: center;
+        }
+
+        #table-block {
+            position: relative;
+            width: 65%;
+        }
+
+        #input-block {
+            width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .coordinate-col {
+            width: 9%
+        }
+
+        .time-col {
+            width: 25%;
+        }
+
+        .result-col {
+            width: 20%
+        }
+
+        .control-buttons {
+            margin-top: 3%;
+        }
+
+        .button {
+            height: 30px;
+            width: 70px;
+            background-color: #7b68ee;
+            border: none;
+        }
+
+        .error-button {
+            color: #ff0000;
+        }
+
+        .button-clicked {
+            border: #008000;
+        }
+
+        .error-text {
+            border: 1px #ff0000;
+        }
+
+        .error-text::placeholder{
+            color: #ff0000;
+        }
+
+        #values-plate {
+            vertical-align: top;
+        }
+        .content-block {
+            padding: 0 0 20px;
+            vertical-align: top;
+            background-color: #ffffff;
+        }
+        .center-align {
+            text-align: center;
+        }
+        input[type="button"]:hover {
+            background-color: #696969;
+            color: #ffffff;
+        }
+        input {
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #663399;
+        }
+
+        ::selection {
+            background: coral;
+        }
+
+    </style>
+</head>
+<body>
+<table id="main-table">
+
+    <tr>
+        <td id="header-block" colspan="2">
+            <p class="center-align">Gerasimov Nikita Alexeyevich (P3230)<br>30006</p>
+    </tr>
+
+    <tr>
+
+        <td class="content-block">
+            <div class="top-plate">
+                <h2 class="center-align">Graph</h2>
+            </div>
+
+            <div id="plate-with-graph">
+                <img alt="Areas, where the dot should get into" src="graph/graph.PNG">
+            </div>
+        </td>
+
+        <td class="content-block" id="table-block" rowspan="2">
+            <div class="top-plate">
+                <h2 class="center-align">Table</h2>
+            </div>
+            <div id="scroll-plate">
+                <table id="result-table-header">
+                    <tbody id="result-table">
+                    <tr>
+                        <th class="coordinate-col">X</th>
+                        <th class="coordinate-col">Y</th>
+                        <th class="coordinate-col">R</th>
+                        <th class="time-col">Current time</th>
+                        <th class="time-col">Execution time</th>
+                        <th class="result-col">Success of your choice</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr id="values-plate" class="content-block">
+        <td>
+            <div class="top-plate">
+                <h2 class="center-align">Values</h2>
+            </div>
+            <form id="input-form" action method="GET">
+                <table id="input-block">
+                    <tr>
+                        <td>
+                            <h3>X: </h3>
+                        </td>
+                        <td>
+                            <div class="x-button">
+                                <input type="button" name="X_value" value="-5">
+                                <input type="button" name="X_value" value="-4">
+                                <input type="button" name="X_value" value="-3">
+                                <input type="button" name="X_value" value="-2">
+                                <input type="button" name="X_value" value="-1">
+                                <input type="button" name="X_value" value="0">
+                                <input type="button" name="X_value" value="1">
+                                <input type="button" name="X_value" value="2">
+                                <input type="button" name="X_value" value="3">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>Y: </h3>
+                        </td>
+                        <td>
+                            <input id="y-input" type="text" name="Y_value" placeholder="(-5;5)" autocomplete="off" maxlength="7">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3>R: </h3>
+                        </td>
+                        <td>
+                            <div class="r-button">
+                                <input type="button" name="R_value" value="1">
+                                <input type="button" name="R_value" value="1.5">
+                                <input type="button" name="R_value" value="2">
+                                <input type="button" name="R_value" value="2.5">
+                                <input type="button" name="R_value" value="3">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="control-buttons">
+                                <input class="button" type="submit" value="Submit">
+                                <input class="button" type="reset" value="Reset">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src='main.js'></script>
+</body>
+</html>
